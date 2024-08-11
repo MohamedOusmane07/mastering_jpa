@@ -5,10 +5,13 @@ import com.mohamed.jpa.models.Author;
 import com.mohamed.jpa.models.Video;
 import com.mohamed.jpa.repositories.AuthorRepository;
 import com.mohamed.jpa.repositories.VideoRepository;
+import com.mohamed.jpa.specification.AuthorSpecification;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -67,8 +70,14 @@ public class MasteringJpaApplication {
 
             //authorRepository.updateAuthor(24,4);
 
-             authorRepository.findByNamedQuery(40).forEach(System.out::println);
-             authorRepository.updateNamedQuery(18);
+            // authorRepository.findByNamedQuery(40).forEach(System.out::println);
+            //authorRepository.updateNamedQuery(18);
+
+
+            Specification<Author> spec=Specification
+                    .where(AuthorSpecification.hasAge(18))
+                    .and(AuthorSpecification.firstNameLike("Marlin"));
+            authorRepository.findAll(spec).forEach(System.out::println);
         };
     }
 
