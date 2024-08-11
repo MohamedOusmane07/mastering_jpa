@@ -65,7 +65,10 @@ public class MasteringJpaApplication {
 
            */
 
-            authorRepository.updateAuthor(24,4);
+            //authorRepository.updateAuthor(24,4);
+
+             authorRepository.findByNamedQuery(40).forEach(System.out::println);
+             authorRepository.updateNamedQuery(18);
         };
     }
 

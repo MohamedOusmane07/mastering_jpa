@@ -1,9 +1,11 @@
 package com.mohamed.jpa.models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +16,16 @@ import java.util.List;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
+@NamedQueries({
+        @NamedQuery(
+                name = "Author.findByNamedQuery",
+                query = "select a from Author a LEFT JOIN FETCH a.courses where a.age >=:age"
+        ),
+        @NamedQuery(
+                name = "Author.updateNamedQuery",
+                query = "update Author a set a.age= :age"
+        )
+})
 public class Author extends BaseEntity {
 
 
