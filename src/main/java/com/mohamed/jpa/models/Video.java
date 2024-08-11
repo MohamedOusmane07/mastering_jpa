@@ -9,6 +9,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Polymorphism;
+import org.hibernate.annotations.PolymorphismType;
+
+import static org.hibernate.annotations.PolymorphismType.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -16,7 +20,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@PrimaryKeyJoinColumn(name = "video_id")
+@Polymorphism(type = EXPLICIT)
 public class Video extends Resource{
 
     private int length;
