@@ -1,5 +1,6 @@
 package com.mohamed.jpa;
 
+import com.github.javafaker.Faker;
 import com.mohamed.jpa.models.Author;
 import com.mohamed.jpa.models.Video;
 import com.mohamed.jpa.repositories.AuthorRepository;
@@ -23,23 +24,48 @@ public class MasteringJpaApplication {
             AuthorRepository authorRepository,
             VideoRepository videoRepository){
         return args -> {
-//            var author= Author.builder()
-//                    .firstName("Mohamed")
-//                    .lastName("Hamed")
-//                    .age(23)
-//                    .email("aaa@gmail.com")
-//                    .createdAt(LocalDateTime.now())
-//                    .build();
-//
-//            authorRepository.save(author);
+            /*for (int i = 0; i < 50; i++) {
+                Faker faker = new Faker();
+            var author= Author.builder()
+                    .firstName(faker.name().firstName())
+                    .lastName(faker.name().lastName())
+                    .age(faker.number().numberBetween(17,75))
+                    .email(faker.name().username()+"aaa@gmail.com")
+                    .createdAt(LocalDateTime.now())
+                    .build();
 
-            var video= Video.builder()
+            authorRepository.save(author);
+            }
+            */
+
+
+
+
+            /*var author= Author.builder()
+                    .id(50)
+                    .firstName("Ibrahim")
+                    .lastName("Mohamed")
+                    .age(23)
+                    .email("aaa2@gmail.com")
+                    .createdAt(LocalDateTime.now())
+                    .lastModifiedAt(LocalDateTime.now())
+                    .build();
+
+            authorRepository.save(author);
+
+             */
+
+          /*  var video= Video.builder()
                     .length(34)
                     .url("dfsfsgs.com")
                     .size(23)
                     .build();
 
             videoRepository.save(video);
+
+           */
+
+            authorRepository.updateAuthor(24,4);
         };
     }
 
