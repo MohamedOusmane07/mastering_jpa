@@ -1,6 +1,7 @@
 package com.mohamed.jpa.models.embeddable;
 
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -17,6 +18,9 @@ public class Order {
 
     @EmbeddedId
     private OrderId id;
+
+    @Embedded
+    private Address address;
 
     private String OrderInfo;
 
